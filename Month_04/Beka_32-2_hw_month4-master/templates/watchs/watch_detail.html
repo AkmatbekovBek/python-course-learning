@@ -1,0 +1,42 @@
+{% include 'watchs/header.html' %}
+
+<center>
+<h1>{{object.title}}</h1>
+<h3>____________________________________________________________________________________________________________________________________________</h3>
+<img src="{{object.image.url}}" alt="image" width="400" height="400">
+<p><b>{{object.description}}</b></p>
+<h3>____________________________________________________________________________________________________________________________________________</h3>
+<h2><p><b>Часы: {{object.watch_type}}</b></p></h2>
+<h2><p><b>Бренд: {{object.watch_type2}}</b></p></h2>
+<h2><p><b>Стоимость: {{object.cost}}</b></p></h2>
+<h3>Местонахождение: {{object.watch_location}}</h3>
+<p><a href={{object.watch_url}}>Ссылка на товар</a></p>
+<button type="button" class="btn btn-outline-danger"><a style="text-decoration: none" href="/watch_detail/{{object.id}}/delete/">Удалить</a></button>
+<button type="button" class="btn btn-outline-primary"><a style="text-decoration: none" href="/watch_detail/{{object.id}}/update/">Изменить</a></button>
+
+   <table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">ОТЗЫВЫ</th>
+      <th scope="col">Оценка:</th>
+      <th scope="col">Комментарий:</th>
+      <th scope="col">Дата создания:</th>
+    </tr>
+  </thead>
+    {% for i in object.comment_object.all %}
+  <tbody>
+    <tr>
+      <th scope="row">💬</th>
+      <td>{{i.review_stars}}</td>
+      <td>{{i.review_text}}</td>
+      <td>{{i.reviews_created_at}}</td>
+    </tr>
+  {% endfor %}
+
+  </tbody>
+</table>
+
+</center>
+{% include 'watchs/footer.html' %}
+
+
